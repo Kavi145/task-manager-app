@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Task Manager</h1>
+        <hr>
+        
+        <div id="auth-section">
+            <div class="card">
+                <h3>Register / Login</h3>
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button onclick="handleAuth('register')">Register</button>
+                <button onclick="handleAuth('login')">Login</button>
+            </div>
+        </div>
+
+        <div id="workspace-section" style="display:none;">
+            <div class="header-actions">
+                <span id="user-display"></span>
+                <button onclick="logout()" class="btn-danger">Logout</button>
+            </div>
+
+            <div class="card">
+                <h3>Create New Task</h3>
+                <input type="text" id="task-title" placeholder="Task Title" required>
+                <input type="text" id="task-desc" placeholder="Task Description (Optional)">
+                <button onclick="createTask()">Add Task</button>
+            </div>
+
+            <div class="filters">
+                <label>Filter Status: 
+                    <select id="status-filter" onchange="fetchTasks()">
+                        <option value="all">All Tasks</option>
+                        <option value="completed">Completed Only</option>
+                        <option value="pending">Pending Only</option>
+                    </select>
+                </label>
+            </div>
+
+            <h3>Your Tasks</h3>
+            <div id="task-list"></div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
